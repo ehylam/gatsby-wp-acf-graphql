@@ -2,8 +2,10 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import './Content.scss'
 
-export default () => {
-
+export default (props) => {
+  // const queryData = props.query;
+  // HOW TO PUT 'queryData' inside the query
+  // the 'queryData' content will depend on the current page.
   const data = useStaticQuery(graphql`
   query SiteContentQuery {
     wpgraphql {
