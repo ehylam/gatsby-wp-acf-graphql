@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby'
 
-import Content from '../components/Content/Content'
-
 const AboutPage = () => {
   // const [aboutState, setAbout] = useState(
   //   {
@@ -20,8 +18,22 @@ const AboutPage = () => {
   //   }
   // )
 
+  const data = graphql`
+  query AboutPageQuery {
+    wpgraphql {
+      posts {
+        nodes {
+          id
+          title
+          content
+        }
+      }
+    }
+  }
+  `
 
   const info = data.wpgraphql.posts.nodes;
+  console.log(info);
 
   return(
     <section className="about__container">
@@ -33,26 +45,8 @@ const AboutPage = () => {
         </div>
       ))
     }
-      {/* <Content query={aboutState.query}/> */}
-
-
     </section>
   )
 }
-
-
-export const data = graphql`
-query AboutPageQuery {
-  wpgraphql {
-    posts {
-      nodes {
-        id
-        title
-        content
-      }
-    }
-  }
-}
-`
 
 export default AboutPage;
